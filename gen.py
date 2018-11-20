@@ -1,33 +1,28 @@
-import random
-import time
-import timeit
-import functools
-
+'''
 def basic_sort(n):
   n.sort()
 
 if __name__ == '__main__':
-  NUM = 50
-  n = [random.randint(-50, 100) for c in range(NUM)]
-  print(n)
-
-  """
-  beg = time.perf_counter()
-  n.sort()
-  end = time.perf_counter()
-  print('dif: {} sec'.format(end-beg))
-  print(n)
-  """
-
+  n = [random.randint(-50, 100) for c in range(100)]
   t = timeit.Timer(functools.partial(basic_sort, n))
-  print(t.timeit(5))
+
+  print(t.timeit(1))
   
-  '''
   print(timeit.timeit(stmt="basic_sort(n)", globals=globals(), \
                       number=10000))
 
   print(timeit.timeit(stmt="basic_sort(n)", globals=globals(), \
                       setup="", number=10000))
-  '''
+'''
 
-  print(n)
+import timeit
+
+setup = '''
+import random
+
+random.seed('slartibartfast')
+s = [random.random() for i in range(1000)]
+timsort = list.sort
+'''
+
+print(min(timeit.Timer('a=s[:]; timsort(a)', setup=setup).repeat(7, 1000)))
