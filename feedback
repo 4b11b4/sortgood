@@ -1,0 +1,18 @@
+1. vcs
+2. compare with existing libraries 
+  - sanity check
+  - plot/compare with existing implementations
+3. interesting features
+  - points for initiative / originality 
+4. quicksort
+  - definitely pick random
+  - describe all pivot selections
+  - different partitioning schemes
+5. references
+  - for everything
+6. automation for creating different sizes and distributions of data and running them
+through timing
+7. reflect on what you have learned
+8. distributions
+  - random, nearly sorted, reversed
+  - few unique (we did not study this)
