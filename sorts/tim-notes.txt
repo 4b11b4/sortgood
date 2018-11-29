@@ -1,0 +1,18 @@
++ A very good stable hybrid sort for modern machines with plenty of memory. Performs well on all input data [best case O(n), worst case O(n log n)] but uses O(n) extra space.
+
++ Thank you for the visualization.  I have one important request though.  Can you publish another video but with a dataset that shows-off the winning feature of Timsort which is taking advantage of partial orderings in the dataset.   In other words, Timsort mainly shines with real data and isn't anything special when confronted with pure random numbers.
+
++ Why would you tim sort random data?
+
++ You're not supposed to use it on random data.
+
+Q: So is this insertion sort in the beginning just to get the data semi-ordered, and then merge sort?
+A: it is a bit more complicated than that. Timsort searches for already sorted subsequences called "runs". If the runs are smaller than a certain value, called "minrun", insertion sort is used to balance the lengths of the runs. then the algorithm uses a modified version of merge sort in order to get the sorted array. Note that sometimes the direction of the merge changes and only a half part of array is being copied to the auxiliary array. There are other things like "galloping mode" that boost the sorting in some cases, but they are complex to explain.
+
++ Protip: Running tim sort on random data is stupid. Its most interesting feature is taking advantage of already sorted subsequences often present in real world data.
+  - It's also stable, which is not noticeable here. (Java sorts on Object's must be stable, I wouldn't be surprised is Python required the same)
+  - It's faster than merge sort. Quick sort is not stable.
+  - @groszak1 It's not asymptotically faster than mergesort, they both run in Θ(n×logn). Also, quicksort can be implemented as a stable sort, but it is much slower.
+  - @hellterminator But they have different constant factors. An algorithm twice faster is twice faster, though they have the same asymptotic complexity.
+  - @groszak1 Yeah, but the constant includes things like platform and implementation details, so it's really hard to make such a blanket statement. Especially if one of the algorithms (timsort) is data dependent. Merge sort will always take the same amount of time for the same amount of numbers (regardless of what those numbers are), timsort will perform exceptionally well on real world data and a little bit better on random data, but there are inputs that will make it run slower than merge sort.
+  - @hellterminator It's faster because binary insertion sort is plugged in for 16--32 items. This is faster than merge sort. Merging is not slower. Binary insertion sort actually performs O(n log n) comparisons but O(n^2) swaps. Comparisons were considered expensive and binary insertion sort reduced comparisons.
