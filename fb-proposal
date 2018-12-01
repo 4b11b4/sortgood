@@ -1,0 +1,10 @@
+You must mention what algorithms you are specifically targeting.
+Are you doing Quicksort? if yes what kind of pivots will you choose and how? What partitioning schemes?
+
+What about initiative/originality in the final report?
+I don't see any feature in the proposal related to that. e.g., switching from quicksort to insertion sort for small arrays would be a very interesting feature.
+
+Also you must mention in the final report any strategy for version control management.
+
+Thank you,
+Paul
